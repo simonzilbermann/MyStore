@@ -6,10 +6,14 @@ const mongoose = require('mongoose');
 //טעינת משתני הסביבה לתוך אובייקט במערכת
 require('dotenv').config();
 
+
 //חיבור הראוטר של המשתמשים אל האפליקציה
 const ProductRouter = require('./api/v1/routes/product');
-const CategoryRouter = require('./api/v1/routes/category')
+const ProductSQLRouter = require('./api/v1/routes/productSQL');
+const CategoryRouter = require('./api/v1/routes/category');
+const CategorySQLRouter = require('./api/v1/routes/categorySQL');
 const UserRouter = require('./api/v1/routes/user');
+const UserSQLRouter = require('./api/v1/routes/userSQL');
 const Auths=require("./api/v1/middlewares/Auths");
 
 
@@ -28,8 +32,11 @@ mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true}).then(()=>{c
 
 //ניתובים,Auths
 app.use("/user",UserRouter);
+app.use("/userSQL",UserSQLRouter);
+app.use("/productSQL",Auths,ProductSQLRouter);
 app.use("/product",Auths,ProductRouter);
 app.use("/category",Auths,CategoryRouter);
+app.use("/categorySQL",Auths,CategorySQLRouter);
 
 
 
