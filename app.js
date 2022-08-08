@@ -18,7 +18,7 @@ const OrderRouter = require('./api/v1/routes/order')
 //const OrderSQLRouter = require('./api/v1/routes/orderSQL')
 //const Auths=require("./api/v1/middlewares/Auths");
 
-
+//
 
 app.use(cors());
 app.use(morgan('dev'));
