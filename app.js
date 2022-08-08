@@ -15,6 +15,7 @@ const CategoryRouter = require('./api/v1/routes/category');
 const UserRouter = require('./api/v1/routes/user');
 //const UserSQLRouter = require('./api/v1/routes/userSQL');
 const OrderRouter = require('./api/v1/routes/order')
+//const OrderSQLRouter = require('./api/v1/routes/orderSQL')
 //const Auths=require("./api/v1/middlewares/Auths");
 
 
@@ -39,6 +40,7 @@ app.use("/product",ProductRouter);
 app.use("/category",CategoryRouter);
 //app.use("/categorySQL",Auths,CategorySQLRouter);
 app.use("/order",OrderRouter);
+//app.use("/orderSQL",OrderSQLRouter);
 
 
 

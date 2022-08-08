@@ -21,8 +21,7 @@ module.exports={
         var pattern = '0123456789'
         var OId= randomId(len, pattern)
         const date = Date.now();
-        
-        console.log(ODetails);
+    
         const Orders = new order({
            _id:new mongoose.Types.ObjectId(),
             ODate:date,
