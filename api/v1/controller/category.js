@@ -7,7 +7,7 @@ module.exports={
         const {CId,CName} = req.body;
 
         var len = 10;
-        var pattern = '0123456789!@#$%^&*()_+'
+        var pattern = '0123456789';
         var id = randomId(len, pattern)
 
         const cate = new category({
