@@ -20,8 +20,8 @@ module.exports={
                 else
                 {
                     //הפונקציה מקבלת מחרוזת ליצירת, קוד מפתח שהמצאנו, זמן תפוגה
-                    const token = jwt.sign({email},process.env.SECRET_KEY,{expiresIn:"1H"})
-                    return res.status(200).json({msg:"User Login Succesfully",token})  
+                    // const token = jwt.sign({email},process.env.SECRET_KEY,{expiresIn:"1H"})
+                    return res.status(200).json({msg:"User Login Succesfully"})  
                 }             
             });
         });
