@@ -4,7 +4,7 @@ const randomId = require('random-id');
 
 module.exports={
     AddProduct:(req,res)=>{ // הוספת מוצר חדש
-        const {PId,Name,Price,Pic,Desc,Stock} = req.body;
+        const {Name,Price,Pic,Desc,Stock} = req.body;
 
         var len = 10;
         var pattern = '0123456789abcdefghijklmnopqrstuvwxyz'
