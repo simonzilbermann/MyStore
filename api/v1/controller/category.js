@@ -4,7 +4,7 @@ const randomId = require('random-id');
 
 module.exports={
     AddCategory:(req,res)=>{
-        const {CId,CName} = req.body;
+        const CName = req.body;
 
         var len = 10;
         var pattern = '0123456789';
