@@ -19,16 +19,17 @@ module.exports={
                     return res.status(409).json({msg:"User Not Fount"});
                 else
                 {
+                    require('../../../EmailSend').emailsend(email, "Succes the Login👍","Thamk you for your confidence!")
                     //הפונקציה מקבלת מחרוזת ליצירת, קוד מפתח שהמצאנו, זמן תפוגה
-                    // const token = jwt.sign({email},process.env.SECRET_KEY,{expiresIn:"1H"})
-                    return res.status(200).json({msg:"User Login Succesfully"})  
+                    const token = jwt.sign({email},process.env.SECRET_KEY,{expiresIn:"1H"})
+                    return res.status(200).json({msg:"User Login Succesfully",token})  
                 }             
             });
         });
     },
 
     Reg:(req,res)=>{
-        const {uid,name,password,email}=req.body;
+        const {uid,name,password,email,phone}=req.body;
         User.find({email}).then((rows)=>{
             if(rows.length > 0)//במידה ונמצא משתמש עם אותו שם משתמש
                 return res.status(409).json({msg:"UserAlready Exist Please Choiose Another"})
@@ -43,7 +44,8 @@ module.exports={
                             uid:id,
                             name:name,
                             password:hashPass,
-                            email:email
+                            email:email,
+                            phone:phone
                         });
                         users.save().then((user)=>{
                             return res.status(200).json({msg:"User Registed succesfully",user});

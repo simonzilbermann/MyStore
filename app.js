@@ -16,9 +16,9 @@ const UserRouter = require('./api/v1/routes/user');
 //const UserSQLRouter = require('./api/v1/routes/userSQL');
 const OrderRouter = require('./api/v1/routes/order')
 //const OrderSQLRouter = require('./api/v1/routes/orderSQL')
-//const Auths=require("./api/v1/middlewares/Auths");
+const Auths=require("./api/v1/middlewares/Auths");
 
-//
+
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -29,17 +29,17 @@ app.use(express.urlencoded({
 
 
 //טעינת מחרוזת ההתחברות מתוך משתנה הסביבה
-const uri = "mongodb+srv://simon:yaron123@cluster0.aas0e.mongodb.net/Ecommerce";//process.env.MONGO_CONN_STR;
+const uri = process.env.MONGO_CONN_STR;
 mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true}).then(()=>{console.log('mongo db connected')});
 
 //ניתובים,Auths
 app.use("/user",UserRouter);
 //app.use("/userSQL",UserSQLRouter);
 //app.use("/productSQL",Auths,ProductSQLRouter);
-app.use("/product",ProductRouter);
-app.use("/category",CategoryRouter);
+app.use("/product",Auths,ProductRouter);
+app.use("/category",Auths,CategoryRouter);
 //app.use("/categorySQL",Auths,CategorySQLRouter);
-app.use("/order",OrderRouter);
+app.use("/order",Auths,OrderRouter);
 //app.use("/orderSQL",OrderSQLRouter);
 
 

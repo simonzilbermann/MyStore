@@ -29,7 +29,7 @@
 
      AddOrder:(req,res)=>{ // הוספת מוצר חדש
         const {ODetails,uid}=req.body;
-        const ODate = Date.now();
+        const ODate = Date.now();z
     
         mssql.connect(config)
         .then(function(conn){
@@ -46,7 +46,7 @@
      },
 
      UpdateOrder:(req,res)=>{// עדכון מוצר
-        const OId = req.params.OId;
+        const OId = req.params.Oid;
         const {ODate,ODetails,uid}=req.body;
         mssql.connect(config)
         .then(function(conn){
@@ -64,7 +64,7 @@
 
 
      DeleteOrder:(req,res)=>{//מחיקת מוצר
-        const OId = req.params.OId;
+        const OId = req.params.Oid;
         mssql.connect(config)
         .then(function(conn){
             const Sql = `DELETE FROM TOrder WHERE OId ='${OId}'`;
@@ -80,7 +80,7 @@
      },
 
      GetOrderById:(req,res)=>{ // הצגת מוצר לפי קוד מוצר    
-        const OId = req.params.OId;
+        const OId = req.params.Oid;
         mssql.connect(config)
          .then(function(conn){
              const Sql = `SELECT * FROM TOrder WHERE OId='${OId}'`;
